@@ -30,9 +30,15 @@
             position: relative;
         }
 
-        #mine-position {
+        #satoshi-position {
+            position: absolute;
             transition: transform 2s linear;
-            transform: translate(50px, -300px);
+            transform: translate(50px, -350px);
+        }
+        #kasumi-position {
+            position: absolute;
+            transition: transform 2s linear;
+            transform: translate(50px, -350px);
         }
 
         .pie-mine {
@@ -50,7 +56,7 @@
 
 <body>
     <div class="ui inverted teal menu" id="header">
-        こみゅろぐ
+        ChildPrint
     </div>
     <div class="ui container" id="main">
         <div class="ui one column grid">
@@ -58,7 +64,8 @@
                 <div class="ui segment">
                     <div id="map-area">
                         <img class="ui centered huge image" src="img/map.png">
-                        <div id="mine-position"><img src="img/location-pin.png"></div>
+                        <div id="satoshi-position"><img src="img/location-pin.png"></div>
+                        <div id="kasumi-position"><img src="img/location-pin.png"></div>
                     </div>
                 </div>
             </div>
@@ -146,19 +153,10 @@
     <script>
         const pieMine = echarts.init(document.getElementById('pie-mine'));
         pieMine.setOption(optionMine);
-        const pieFriends1 = echarts.init(document.getElementById('pie-friends-1'));
-        pieFriends1.setOption(optionFriends1);
-        const pieFriends2 = echarts.init(document.getElementById('pie-friends-2'));
-        pieFriends2.setOption(optionFriends2);
-        const pieFriends3 = echarts.init(document.getElementById('pie-friends-3'));
-        pieFriends3.setOption(optionFriends3);
 
         // リサイズした際にはアニメ無しで位置を保つ
         window.onresize = function () {
             pieMine.resize();
-            //pieFriends1.resize();
-            //pieFriends2.resize();
-            //pieFriends3.resize();
 
             const mapWidth = $('#map-area').width();
             const mapHeight = $('#map-area').height();
@@ -169,18 +167,81 @@
             $('#mine-position').css('transform', 'translate(' + x + 'px, ' + -1 * y + 'px)');
         };
 
-        var x = 50;
+
+        var satoshiGnd = {
+            x: 50,
+            y: 50
+        }
+        var satoshiLib = {
+            x: 40,
+            y: 40
+        }
+        var satoshiCls = {
+            x: 30,
+            y: 30
+        }
+        var kasumiGnd = {
+            x: 55,
+            y: 50
+        }
+        var kasumiLib = {
+            x: 45,
+            y: 40
+        }
+        var kasumiCls = {
+            x: 35,
+            y: 30
+        }
+
+        // 初期はグランド
+        var satoshi = satoshiGnd;
+        var kasumi = kasumiGnd;
 
         // ５秒に一回ステータスを確認してポジションに移動
         setInterval(
             () => {
-                $('#mine-position').css('transition', 'transform 2s linear');
-                const mapWidth = $('#map-area').width();
-                const mapHeight = $('#map-area').height();
-                x = mapWidth * 0.5;
-                x += 10;
-                y = mapHeight * 0.5;
-                $('#mine-position').css('transform', 'translate(' + x + 'px, ' + -1 * y + 'px)');
+
+                // 最新位置取得
+                var xmlHttpRequest = new XMLHttpRequest();
+                xmlHttpRequest.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        if (this.response) {
+                            // 位置に応じて座標を指定
+                            if (this.response.satoshi.place == 'ground') {
+                                satoshi = satoshiGnd;
+                            }
+                            else if (this.response.satoshi.place == 'classroom') {
+                                satoshi = satoshiCls;
+                            }
+                            else if (this.response.satoshi.place == 'library') {
+                                satoshi = satoshiLib;
+                            }
+
+                            if (this.response.kasumi.place == 'ground') {
+                                kasumi = kasumiGnd;
+                            }
+                            else if (this.response.kasumi.place == 'classroom') {
+                                kasumi = kasumiCls;
+                            }
+                            else if (this.response.kasumi.place == 'library') {
+                                kasumi = kasumiLib;
+                            }
+
+                            $('#mine-position').css('transition', 'transform 2s linear');
+                            const mapWidth = $('#map-area').width();
+                            const mapHeight = $('#map-area').height();
+
+                            $('#satoshi-position').css('transform',
+                                'translate(' + (mapWidth * satoshi.x / 100) + 'px, ' + (-1 * mapHeight * satoshi.y / 100) + 'px)');
+                            $('#kasumi-position').css('transform',
+                                'translate(' + (mapWidth * kasumi.x / 100) + 'px, ' + (-1 * mapHeight * kasumi.y / 100) + 'px)');
+
+                        }
+                    }
+                }
+                xmlHttpRequest.open('GET', 'https://r-stack-2017-com.firebaseio.com/friends.json', true);
+                xmlHttpRequest.responseType = 'json';
+                xmlHttpRequest.send(null);
             },
             5000
         )
