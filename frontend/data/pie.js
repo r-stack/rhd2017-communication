@@ -9,7 +9,7 @@ function getPieOption(gym, gnd, cls, lib, etc) {
         legend: {
             orient: 'horizontal',
             left: 'left',
-            data: ['体育館', '運動場', '教室', '図書室', 'その他']
+            data: ['グラウンド', '教室', '図書室', '理科室', 'その他']
         },
         series: [
             {

@@ -20,15 +20,18 @@
         body {
             background-color: rgb(30, 65, 99);
         }
+
         #header {
             height: 55px;
             margin-bottom: 40px;
             background-color: #F75B78;
         }
+
         #logo {
             margin: 10px;
             color: #FFF;
         }
+
         #main {
             max-width: 850px !important;
         }
@@ -132,8 +135,7 @@
                                     </div>
                                 </div>
                                 <div class="content">
-                                    <a class="header">本の虫</a>
-                                    最近は図書室の常連のようです。新しい本が入ったのでしょうか。
+                                    <a class="header">本の虫</a> 最近は図書室の常連のようです。新しい本が入ったのでしょうか。
                                 </div>
                             </div>
                         </div>
@@ -148,8 +150,7 @@
                                     </div>
                                 </div>
                                 <div class="content">
-                                    <a class="header">芸術の秋</a>
-                                    最近は図工室での作業が多いようです。新作の発表も近いか！？
+                                    <a class="header">芸術の秋</a> 最近は図工室での作業が多いようです。新作の発表も近いか！？
                                 </div>
                             </div>
                         </div>
@@ -164,8 +165,7 @@
                                     </div>
                                 </div>
                                 <div class="content">
-                                    <a class="header">マッドサイエンティスト</a>
-                                    最近は理科室にいることが多いようです。なにやら怪しい実験中？
+                                    <a class="header">マッドサイエンティスト</a> 最近は理科室にいることが多いようです。なにやら怪しい実験中？
                                 </div>
                             </div>
                         </div>
@@ -179,17 +179,17 @@
         pieMine.setOption(optionMine);
 
         // リサイズした際にはアニメ無しで位置を保つ
-        // window.onresize = function () {
-        //     pieMine.resize();
+        window.onresize = function () {
+            pieMine.resize();
 
-        //     const mapWidth = $('#map-area').width();
-        //     const mapHeight = $('#map-area').height();
-        //     x = mapWidth * 0.5;
-        //     y = mapHeight * 0.5;
+            const mapWidth = $('#map-area').width();
+            const mapHeight = $('#map-area').height();
+            x = mapWidth * 0.5;
+            y = mapHeight * 0.5;
 
-        //     $('#mine-position').css('transition', 'transform 0s linear');
-        //     $('#mine-position').css('transform', 'translate(' + x + 'px, ' + -1 * y + 'px)');
-        // };
+            $('#mine-position').css('transition', 'transform 0s linear');
+            $('#mine-position').css('transform', 'translate(' + x + 'px, ' + -1 * y + 'px)');
+        };
 
 
         var satoshiGnd = {
@@ -217,12 +217,8 @@
             y: 66
         }
 
-        const width = $('#map-area').width();
-        const height = $('#map-area').height();
-        $('#two-position').css('transform',
-            'translate(' + (width * 48 / 100) + 'px, ' + (-1 * height * 70 / 100) + 'px)');
-        $('#three-position').css('transform',
-            'translate(' + (width * 52 / 100) + 'px, ' + (-1 * height * 52 / 100) + 'px)');
+
+
 
         // 初期はグランド
         var satoshi = satoshiGnd;
@@ -266,7 +262,10 @@
                                 'translate(' + (mapWidth * satoshi.x / 100) + 'px, ' + (-1 * mapHeight * satoshi.y / 100) + 'px)');
                             $('#kasumi-position').css('transform',
                                 'translate(' + (mapWidth * kasumi.x / 100) + 'px, ' + (-1 * mapHeight * kasumi.y / 100) + 'px)');
-
+                            $('#two-position').css('transform',
+                                'translate(' + (mapWidth * 48 / 100) + 'px, ' + (-1 * mapHeight * 70 / 100) + 'px)');
+                            $('#three-position').css('transform',
+                                'translate(' + (mapWidth * 52 / 100) + 'px, ' + (-1 * mapHeight * 52 / 100) + 'px)');
                         }
                     }
                 }
