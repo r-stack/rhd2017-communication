@@ -61,9 +61,9 @@
     <div class="ui container" id="main">
         <div class="ui one column grid">
             <div class="column">
-                <div class="ui segment">
+                <div class="ui segment" style="background-color: rgb(0, 35, 69)">
                     <div id="map-area">
-                        <img class="ui centered huge image" src="img/map.png">
+                        <img class="ui centered fruid image" src="img/map.png">
                         <div id="satoshi-position"><img src="img/location-pin.png"></div>
                         <div id="kasumi-position"><img src="img/location-pin.png"></div>
                     </div>
@@ -71,14 +71,14 @@
             </div>
             <div class="column">
                 <div class="ui segment">
-                    <h4 class="ui header">最近の休み時間</h4>
-                    <div class="ui two column grid">
-                        <div class="column">
+                    <h4 class="ui header">最近の居場所</h4>
+                    <div class="ui grid">
+                        <div class="ten wide column">
                             <div class="ui segment">
                                 <div class="pie-mine" id="pie-mine"></div>
                             </div>
                         </div>
-                        <div class="column">
+                        <div class="six wide column">
                             <div class="ui furuid card">
                                 <div class="ui center aligned grid">
                                     <div class="twelve wide column">
@@ -86,9 +86,10 @@
                                     </div>
                                 </div>
                                 <div class="content">
-                                    <a class="header">図書室</a>
+                                    <a class="header">最近の傾向：本の虫</a>
                                     <div class="description">
                                         最近は休み時間を図書室で過ごすのがマイブームのようです。
+                                        お気に入りのシリーズが見つかったのでしょうか。
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +99,7 @@
             </div>
             <div class="column">
                 <div class="ui segment">
-                    <h4 class="ui header">最近一緒のふれんず TOP3</h4>
+                    <h4 class="ui header">最近のふれんず</h4>
                     <div class="ui three column grid">
                         <div class="column">
                             <div class="ui fluid card">
@@ -169,28 +170,28 @@
 
 
         var satoshiGnd = {
-            x: 50,
-            y: 50
+            x: 33,
+            y: 40
         }
         var satoshiLib = {
-            x: 40,
-            y: 40
+            x: 64,
+            y: 44
         }
         var satoshiCls = {
-            x: 30,
-            y: 30
+            x: 36,
+            y: 66
         }
         var kasumiGnd = {
-            x: 55,
-            y: 50
-        }
-        var kasumiLib = {
-            x: 45,
+            x: 36,
             y: 40
         }
+        var kasumiLib = {
+            x: 64,
+            y: 39
+        }
         var kasumiCls = {
-            x: 35,
-            y: 30
+            x: 40,
+            y: 66
         }
 
         // 初期はグランド

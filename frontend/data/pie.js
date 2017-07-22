@@ -77,7 +77,7 @@ function getPieOption(gym, gnd, cls, lib, etc) {
 }
 
 
-var optionMine = getPieOption(12, 15, 30, 40, 3);
+var optionMine = getPieOption(12, 9, 20, 30, 19);
 var optionFriends1 = getPieOption(12, 15, 30, 40, 3);
 var optionFriends2 = getPieOption(12, 15, 30, 40, 3);
 var optionFriends3 = getPieOption(12, 15, 30, 40, 3);
