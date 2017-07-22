@@ -20,39 +20,21 @@ function getPieOption(gym, gnd, cls, lib, etc) {
                 data: [
                     {
                         value: gym,
-                        name: '体育館',
-                        itemStyle: {
-                            normal: {
-                                color: 'rgba(200,214,120,1)'
-                            }
-                        }
+                        name: 'グラウンド',
                     },
                     {
                         value: gnd,
-                        name: '運動場',
-                        itemStyle: {
-                            normal: {
-                                color: 'rgba(160,120,100,1)'
-                            }
-                        }
+                        name: '教室',
                     },
                     {
                         value: cls,
-                        name: '教室',
-                        itemStyle: {
-                            normal: {
-                                color: 'rgba(110,120,250,1)'
-                            }
-                        }
+                        name: '図書室',
+
                     },
                     {
                         value: lib,
-                        name: '図書室',
-                        itemStyle: {
-                            normal: {
-                                color: 'rgba(110,200,100,1)'
-                            }
-                        }
+                        name: '理科室',
+
                     },
                     {
                         value: etc,
@@ -77,7 +59,7 @@ function getPieOption(gym, gnd, cls, lib, etc) {
 }
 
 
-var optionMine = getPieOption(12, 9, 20, 30, 19);
+var optionMine = getPieOption(12, 9, 30, 20, 19);
 var optionFriends1 = getPieOption(12, 15, 30, 40, 3);
 var optionFriends2 = getPieOption(12, 15, 30, 40, 3);
 var optionFriends3 = getPieOption(12, 15, 30, 40, 3);

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ChildPrint</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="data/pie.js"></script>
+
+
+    <style>
+        body {
+            background-color: rgb(30, 65, 99);
+        }
+
+        #header {
+            height: 55px;
+            margin-bottom: 40px;
+            background-color: #F75B78;
+        }
+
+        #logo {
+            margin: 10px;
+            color: #FFF;
+        }
+
+        #main {
+            max-width: 850px !important;
+        }
+
+        #map-area {
+            position: relative;
+        }
+
+        #satoshi-position {
+            position: absolute;
+            transition: transform 2s linear;
+            transform: translate(50px, -350px);
+        }
+
+        #kasumi-position {
+            position: absolute;
+            transition: transform 2s linear;
+            transform: translate(50px, -350px);
+        }
+
+        #two-position {
+            position: absolute;
+            transform: translate(50px, -350px);
+        }
+
+        #three-position {
+            position: absolute;
+            ;
+            transform: translate(50px, -350px);
+        }
+
+        .pie-mine {
+            width: 100%;
+            height: 600px;
+        }
+
+        .pie-friends {
+            width: 100%;
+            height: 250px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="ui inverted teal menu" id="header">
+        <h2 id="logo">ChildPrint</h3>
+    </div>
+    <div class="ui container" id="main">
+        <div class="ui one column grid">
+            <div class="column">
+
+            </div>
+            <div class="column">
+                <div class="ui segment">
+                    <h4 class="ui header">うつりかわり</h4>
+                    <div class="ui grid">
+                        <div class="sixteen wide column">
+                            <div class="ui segment">
+                                <div class="pie-mine" id="pie-mine"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data: ['グラウンド', '教室', '図書室', '理科室', '図工室']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                data: ['４週間前', '３週間前', '２週間前', '1週間前']
+
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: 'グラウンド',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [50, 45, 20, 5]
+                },
+                {
+                    name: '教室',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [20, 25, 20, 20]
+                },
+                {
+                    name: '図書室',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [5, 10, 30, 45]
+                },
+                {
+                    name: '理科室',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [5, 10, 20, 15]
+                },
+                {
+                    name: '図工室',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [20, 10, 10, 15]
+                }
+            ]
+        };
+
+        const pieMine = echarts.init(document.getElementById('pie-mine'));
+        pieMine.setOption(option);
+    </script>
+</body>
+
+</html>
