@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>キャッチーなタイトル</title>
+    <title>こみゅろぐ</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
 
@@ -49,7 +49,9 @@
 </head>
 
 <body>
-    <div class="ui inverted teal menu" id="header"></div>
+    <div class="ui inverted teal menu" id="header">
+        こみゅろぐ
+    </div>
     <div class="ui container" id="main">
         <div class="ui one column grid">
             <div class="column">
@@ -62,16 +64,26 @@
             </div>
             <div class="column">
                 <div class="ui segment">
+                    <h4 class="ui header">最近の休み時間</h4>
                     <div class="ui two column grid">
                         <div class="column">
                             <div class="ui segment">
-                                <h4 class="ui header">最近の休み時間</h4>
                                 <div class="pie-mine" id="pie-mine"></div>
                             </div>
                         </div>
                         <div class="column">
-                            <div class="ui segment">
-                                最近は休み時間を図書室で過ごすのが流行りのようです。
+                            <div class="ui furuid card">
+                                <div class="ui center aligned grid">
+                                    <div class="twelve wide column">
+                                        <img class="ui fluid image" src="img/book.png">
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <a class="header">図書室</a>
+                                    <div class="description">
+                                        最近は休み時間を図書室で過ごすのがマイブームのようです。
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -82,21 +94,48 @@
                     <h4 class="ui header">最近一緒のふれんず TOP3</h4>
                     <div class="ui three column grid">
                         <div class="column">
-                            1.
-                            <div class="ui segment">
-                                <div class="pie-friends" id="pie-friends-1"></div>
+                            <div class="ui fluid card">
+                                <div class="content">
+                                    <img class="ui avatar image" src="/images/avatar/large/elliot.jpg"> じょーさん
+                                </div>
+                                <div class="ui center aligned grid">
+                                    <div class="twelve wide column">
+                                        <img class="ui fluid image" src="img/book.png">
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    最近は図書室の常連のようです。新しい本が入ったのでしょうか。
+                                </div>
                             </div>
                         </div>
                         <div class="column">
-                            2.
-                            <div class="ui segment">
-                                <div class="pie-friends" id="pie-friends-2"></div>
+                            <div class="ui fluid card">
+                                <div class="content">
+                                    <img class="ui avatar image" src="/images/avatar/large/elliot.jpg"> センターウッドさん
+                                </div>
+                                <div class="ui center aligned grid">
+                                    <div class="twelve wide column">
+                                        <img class="ui fluid image" src="img/art.png">
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    最近は図工室での作業が多いようです。新作の発表も近いか！？
+                                </div>
                             </div>
                         </div>
                         <div class="column">
-                            3.
-                            <div class="ui segment">
-                                <div class="pie-friends" id="pie-friends-3"></div>
+                            <div class="ui fluid card">
+                                <div class="content">
+                                    <img class="ui avatar image" src="/images/avatar/large/elliot.jpg"> えむてーさん
+                                </div>
+                                <div class="ui center aligned grid">
+                                    <div class="twelve wide column">
+                                        <img class="ui fluid image" src="img/science.png">
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    最近は理科室にいることが多いようです。なにやら怪しい実験中？
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,21 +156,21 @@
         // リサイズした際にはアニメ無しで位置を保つ
         window.onresize = function () {
             pieMine.resize();
-            pieFriends1.resize();
-            pieFriends2.resize();
-            pieFriends3.resize();
+            //pieFriends1.resize();
+            //pieFriends2.resize();
+            //pieFriends3.resize();
 
             const mapWidth = $('#map-area').width();
             const mapHeight = $('#map-area').height();
             x = mapWidth * 0.5;
             y = mapHeight * 0.5;
-            
+
             $('#mine-position').css('transition', 'transform 0s linear');
             $('#mine-position').css('transform', 'translate(' + x + 'px, ' + -1 * y + 'px)');
         };
 
         var x = 50;
-        
+
         // ５秒に一回ステータスを確認してポジションに移動
         setInterval(
             () => {
